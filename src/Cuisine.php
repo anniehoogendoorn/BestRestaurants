@@ -33,6 +33,25 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        static function getAll()
+        {
+
+            $returned_cuisines = $GLOBALS['DB']->query("SELECT * FROM cuisine;");
+            $cuisines = array();
+            foreach($returned_cuisines as $cuisine) {
+                $name = $cuisine['name'];
+                $id = $cuisine['id'];
+                $new_cuisine = new Cuisine($name, $id);
+                array_push($cuisines, $new_cuisine);
+            }
+            return $cuisines;
+        }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM cuisine;");
+        }
+
 
 
 

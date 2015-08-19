@@ -13,21 +13,21 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-    class RestaurantTests extends PHPUnit_Framework_TestCase
+    class RestaurantTest extends PHPUnit_Framework_TestCase
     {
 
-          protected function tearDown()
-          {
-              Restaurant::deleteAll();
-              Cuisine::delteAll();
-          }
+        //   protected function tearDown()
+        //   {
+        //       Restaurant::deleteAll();
+        //       Cuisine::delteAll();
+        //   }
 
-          function test_getName()
-          {
-              //Arrange
-              $name = "";
-              $test_
-          }
+        //   function test_getName()
+        //   {
+        //       //Arrange
+        //       $name = "";
+        //       $test_
+        //   }
     }
 
 ?>
