@@ -1,0 +1,73 @@
+For CuisineTest
+
+getName
+
+1. Takes the entered cuisine type and saves it into the variable $name
+
+Input: "Italian";
+Output: $name;
+
+getId
+
+2. Takes the entered cuisine type and assigns it an id value.
+
+Input: "Italian";
+Id: 1;
+Output: true
+
+save
+
+3. Saving the new cuisine type the database.
+
+Input: "Italian";
+Output: $test_cuisine;
+
+getAll
+
+4. Takes multiple inputs and saves them to the database using the save function,
+then finding them with getAll method
+
+Input1: "Italian";
+Input2: "Greek";
+Output: $test_cuisine1, $test_cuisine2;
+
+
+getRestaurants
+
+5. Attaches cuisine id to the new restaurant objects, saves them to the database,
+and finds them in the data
+
+Input1_cuisine: "Italian"
+
+Input1_restaurant: "Piazza Italia";
+Input2_restaurant: "Ristorante Roma";
+
+Output: $test_restaurant, $test_restaurant2;
+
+
+Update
+
+6.Lets user update $name variable.
+
+Input1: "Italian";
+Output: "French";
+
+Delete
+
+7. Deletes one cuisine type from the database.
+
+$test_cuisine1: "Italian";
+$test_cuisine2: "French";
+Output: $test_cuisine2;
+
+
+DeleteRestaurant
+8.
+
+
+
+
+
+For RestaurantTest
+
+1.

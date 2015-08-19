@@ -40,3 +40,5 @@
               $this->id = $GLOBALS['DB']->lastInsertId();
           }
     }
+
+?>
