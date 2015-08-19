@@ -86,6 +86,33 @@
             $this->assertEquals([$test_cuisine, $test_cuisine2], $result);
         }
 
+        function testGetRestaurants()
+        {
+
+            //Arrange
+            $name = "Italian";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $test_cuisine_id = $test_cuisine->getId();
+
+            $name = "Piazza Italia";
+            $test_restaurant = new Restaurant($name, $id, $test_cuisine_id);
+            $test_restaurant->save();
+
+            $name2 = "Ristotante Roma";
+            $test_restaurant2 = new Restaurant($name, $id, $test_cuisine_id);
+            $test_restaurant2->save();
+
+            //Act
+            $result = $test_cuisine->getRestaurants();
+
+            //Assert
+            $this->assertEquals([$test_restaurant, $test_restaurants2], $result);
+
+        }
+
     }
 
 ?>
