@@ -98,11 +98,11 @@
             $test_cuisine_id = $test_cuisine->getId();
 
             $name = "Piazza Italia";
-            $test_restaurant = new Restaurant($name, $id, $test_cuisine_id);
+            $test_restaurant = new Restaurant($name, $id, $test_cuisine_id, $rating);
             $test_restaurant->save();
 
             $name2 = "Ristotante Roma";
-            $test_restaurant2 = new Restaurant($name, $id, $test_cuisine_id);
+            $test_restaurant2 = new Restaurant($name, $id, $test_cuisine_id, $rating);
             $test_restaurant2->save();
 
             //Act
@@ -159,7 +159,7 @@
 
             $name = "Piazza Italia";
             $cuisine_id = $test_cuisine->getId();
-            $test_restaurant = new Restaurant($name, $id, $cuisine_id);
+            $test_restaurant = new Restaurant($name, $id, $cuisine_id, $rating);
             $test_restaurant->save();
 
             //Act

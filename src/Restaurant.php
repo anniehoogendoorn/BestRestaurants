@@ -6,12 +6,14 @@
           private $name;
           private $id;
           private $cuisine_id;
+          private $rating;
 
-          function __construct($name, $id = null, $cuisine_id)
+          function __construct($name, $id = null, $cuisine_id, $rating)
           {
               $this->name = $name;
               $this->id = $id;
               $this->cuisine_id = $cuisine_id;
+              $this->rating = $rating;
           }
 
           function setName($new_name)
@@ -34,9 +36,19 @@
               return $this->cuisine_id;
           }
 
+          function setRating($new_rating)
+          {
+              $this->rating = (int) $new_rating;
+          }
+
+          function getRating()
+          {
+              return $this->rating;
+          }
+
           function save()
           {
-              $GLOBALS['DB']->exec("INSERT INTO restaurants (name, cuisine_id) VALUES ('{$this->getName()}', {$this->getCuisineId()})");
+              $GLOBALS['DB']->exec("INSERT INTO restaurants (name, cuisine_id, rating) VALUES ('{$this->getName()}', {$this->getCuisineId()}, {$this->getRating()});");
               $this->id = $GLOBALS['DB']->lastInsertId();
           }
 
@@ -48,9 +60,11 @@
                   $name = $restaurant['name'];
                   $id = $restaurant['id'];
                   $cuisine_id = $restaurant['cuisine_id'];
-                  $new_restaurant = new Restaurant($name, $id, $cuisine_id);
+                  $rating = $restaurant['rating'];
+                  $new_restaurant = new Restaurant($name, $id, $cuisine_id, $rating);
                   array_push($restaurants, $new_restaurant);
               }
+
               return $restaurants;
           }
 
