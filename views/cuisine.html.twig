@@ -11,7 +11,7 @@
                 <p>Here are your restaurants:</p>
                 <ul>
                     {% for restaurant in restaurants %}
-                        <li>{{ restaurant.getName }} {{ restaurant.getRating }}</li>
+                        <li>{{ restaurant.getName }}, Rating: {{ restaurant.getRating }} star(s)</li>
                     {% endfor %}
                 </ul>
             {% endif %}
