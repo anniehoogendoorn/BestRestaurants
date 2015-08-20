@@ -8,3 +8,29 @@
             <h1>Here are your Cuisine Types</h1>
 
             <p>Add a new cuisine type:</p>
+
+            <form action="/cuisines" method="post">
+                <div class='form-group'>
+                    <label for="name">Cuisine name:</label>
+                    <input id="name" name="name" class='form-control' type="text">
+                </div>
+                <button type="submit" class='btn btn-info'>Add Cuisine</button>
+            </form>
+
+            <form action='/delete_cuisine' method='post'>
+                <button type='submit' class='btn btn-danger'>Clear</button>
+            </form>
+
+            {% if cuisines is not empty %}
+                <p>Here are all of your cuisine types:</p>
+                <ul>
+                    {% for cuisine in cuisines %}
+                        <li><a href="/cuisines/{{ cuisine.getId }}">{{ cuisine.getName }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You have no cuisine types yet!</p>
+            {% endif %}
+        </div>
+    </body>
+</html>

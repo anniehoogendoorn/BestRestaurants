@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Update the Cuisine Type</title>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>Update the {{ cuisine.getName }} Cuisine type.</h1>
+
+            <form action="/cuisines/{{ cuisine.getId }}" method="post">
+                <div class='form-control'>
+                    <input name="_method" type="hidden" value="patch">
+
+                    <label for='name'>Edit the cuisine type:</label>
+                    <input id='name' name='name' type='text'>
+                </div>
+
+                <button type='submit'>Update</button>
+            </form>
+
+            <form action="/cuisines/{{ cuisines.getId }}" method="post">
+                <input name="_method" type="hidden" value="delete">
+
+                <button type="submit" class="btn btn-danger">Delete this cuisine</button>
+            </form>
+
+        </div>
+    </body>
+</html>
