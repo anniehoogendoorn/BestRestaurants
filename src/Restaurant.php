@@ -39,6 +39,39 @@
               $GLOBALS['DB']->exec("INSERT INTO restaurants (name, cuisine_id) VALUES ('{$this->getName()}', {$this->getCuisineId()})");
               $this->id = $GLOBALS['DB']->lastInsertId();
           }
+
+          static function getAll()
+          {
+              $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants;");
+              $restaurants = array();
+              foreach($returned_restaurants as $restaurant) {
+                  $name = $restaurant['name'];
+                  $id = $restaurant['id'];
+                  $cuisine_id = $restaurant['cuisine_id'];
+                  $new_restaurant = new Restaurant($name, $id, $cuisine_id);
+                  array_push($restaurants, $new_restaurant);
+              }
+              return $restaurants;
+          }
+
+          static function deleteAll()
+          {
+            $GLOBALS['DB']->exec("DELETE FROM restaurants;");
+
+          }
+
+          static function find($search_id)
+          {
+              $found_restaurant = null;
+              $restaurants = Restaurant::getAll();
+              foreach($restaurants as $restaurant) {
+                  $restaurant_id = $restaurant->getId();
+                  if ($restaurant_id == $search_id) {
+                      $found_restaurant = $restaurant;
+                  }
+              }
+              return $found_restaurant;
+          }
     }
 
 ?>

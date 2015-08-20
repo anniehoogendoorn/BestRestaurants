@@ -18,7 +18,7 @@
         protected function tearDown()
         {
             Cuisine::deleteAll();
-            //Restaurant:deleteAll();
+            Restaurant::deleteAll();
 
         }
 
@@ -109,9 +109,67 @@
             $result = $test_cuisine->getRestaurants();
 
             //Assert
-            $this->assertEquals([$test_restaurant, $test_restaurants2], $result);
+            $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
 
         }
+
+        function testUpdate()
+        {
+            //Arrange
+            $name = "Italian";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $new_name = "Greek";
+
+            //Act
+            $test_cuisine->update($new_name);
+
+            //Assert
+            $this->assertEquals("Greek", $test_cuisine->getName());
+        }
+
+        function testDelete()
+        {
+            //Arrange
+            $name = "Italian";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name2 = "French";
+            $test_cuisine2 = new Cuisine($name2, $id);
+            $test_cuisine2->save();
+
+            //Act
+            $test_cuisine->delete();
+
+            //Assert
+            $this->assertEquals([$test_cuisine2], Cuisine::getAll());
+        }
+
+        function testDeleteCuisineRestaurants()
+        {
+            //Arrange
+            $name = "Italian";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Piazza Italia";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            //Act
+            $test_cuisine->delete();
+
+            //Assert
+            $this->assertEquals([], Restaurant::getAll());
+
+        }
+
 
     }
 
